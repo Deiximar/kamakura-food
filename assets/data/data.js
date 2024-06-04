@@ -1,4 +1,4 @@
-const filters = ['todos','ramen', 'sushi', 'entradas', 'postres'];
+const filters = ['todos', 'ramen', 'sushi', 'entradas', 'postres'];
 
 const products = [
     {
@@ -262,4 +262,4 @@ const products = [
     }
 ];
 
-export {filters, products}
+export { filters, products }
