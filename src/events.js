@@ -1,11 +1,14 @@
 //Intenta separar los eventos en este archivo.
 
-//id cart class cart-menu
-console.log("hola");
 
 document.getElementById("cart").addEventListener("click", displayCart);
 
 function displayCart() {
-    document.getElementById("cart-container");
-    //if else 
+    let cartContainer = document.getElementById("cart-container");
+    if(cartContainer.style.display === "none"){
+        cartContainer.style.display = "flex";
+    } else
+    {
+        cartContainer.style.display = "none";  
+    }
 }
