@@ -1,4 +1,6 @@
-import { filters, products } from '../assets/data/data.js'
+import { filters, products } from '../assets/data/data.js';
+import { addEventClickFilter } from './events.js';
+
 //DEBE imprimir en pantalla la información de filtros.
 const filtersContainer = document.querySelector('#filters');
 document.querySelector('.filter').remove();
@@ -7,7 +9,7 @@ const createFilter = (filter) => {
   const filterButton = document.createElement('button');
   filterButton.classList = 'filter';
   filterButton.innerHTML = filter;
-
+  addEventClickFilter(filterButton, filter);
   filtersContainer.appendChild(filterButton);
 }
 
@@ -29,5 +31,17 @@ const createProduct = (product) => {
   productsContainer.appendChild(productContainer);
 }
 
+const filterProducts = (filter) => {
+  document.querySelectorAll('.product-container').forEach(product => product.remove());
+  if (filter === 'todos') {
+    products.forEach(product => createProduct(product));
+
+  } else {
+    products.filter(product => product.category === filter).forEach(product => createProduct(product));
+  }
+}
+
 filters.forEach(filter => createFilter(filter));
 products.forEach(product => createProduct(product));
+
+export { filterProducts };
