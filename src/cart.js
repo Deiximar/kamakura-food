@@ -2,6 +2,8 @@
 
 import { products } from "../assets/data/data.js";
 
+const cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+
 const cartProducts = document.querySelector("#cart-products");
 document.querySelector(".cart-container").remove();
 // Agrega un event listener al contenedor de productos
@@ -23,3 +25,20 @@ function createProductInCart(product) {
   cartProducts.appendChild(cartContainer);
 }
 selectedProducts.forEach((product) => createProductInCart(product));
+
+
+const addProduct = (id) => {
+  const search = cart.find(item => item.id == id);
+
+  if (search === undefined) {
+    cart.push({
+      id: id,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+export { addProduct }
