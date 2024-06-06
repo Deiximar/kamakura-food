@@ -53,5 +53,6 @@ const searchProduct = (id) => {
   return products.find((product) => product.id == id) || [];
 }
 
+createProductInCart();
 
 export { addProduct }
