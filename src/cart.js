@@ -1,7 +1,7 @@
 //DEBE contener las funcionalidades del carrito de compras.
 
 import { products } from "../assets/data/data.js";
-
+let selectProducts = []
 const cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 
 const cartProducts = document.querySelector("#cart-products");
@@ -39,6 +39,23 @@ const addProduct = (id) => {
     search.item += 1;
   }
   localStorage.setItem("cart", JSON.stringify(cart));
+ selectProducts = createSelecterProducts ();
+ console.log(selectProducts)
+}
+
+function createSelecterProducts(){
+  console.log(cart)
+  if(cart !== 0){
+    cart.map((x)=> { 
+      let search = products.find((y)=> y.id == x.id) || []; 
+      console.log(search)
+      return search
+    })  
+  }
+  else{
+    return[]
+  }
 }
 
 export { addProduct }
+
