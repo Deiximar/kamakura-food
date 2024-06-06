@@ -14,8 +14,8 @@ const createReceipt = (product) => {
                 <h5>Subtotal ${product.subtotal}€</h5>
             </div>     
 
-    `  
-    receiptProducts.insertBefore(receiptProduct,document.getElementById(`receipt-total`))
+    `
+    receiptProducts.insertBefore(receiptProduct, document.getElementById(`receipt-total`))
 }
 
 selectedProduct.forEach(product => createReceipt(product))
