@@ -1,5 +1,6 @@
 import { filters, products } from '../assets/data/data.js';
 import { addEventClickFilter } from './events.js';
+import { addProduct } from './cart.js'
 
 //DEBE imprimir en pantalla la información de filtros.
 const filtersContainer = document.querySelector('#filters');

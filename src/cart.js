@@ -52,10 +52,11 @@ const addProduct = (id) => {
 const searchProduct = (id) => {
   return products.find((product) => product.id == id) || [];
 }
+
 const addProductAmount = (id) => {
   console.log('Hola!!');
 }
 
 createProductInCart();
 
-export { addProduct }
+export { addProduct, addProductAmount }
