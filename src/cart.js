@@ -23,7 +23,7 @@ function createProductInCart() {
             <h5>${product.price}€</h5>
         </div>
         <div class="quantity-container" id="quantity">
-            <button>+</button>
+            <button onclick="addProductAmount(${product.id})">+</button>
             <p class="quantity">1</p>
             <button>-</button>
         </div>
@@ -51,6 +51,9 @@ const addProduct = (id) => {
 
 const searchProduct = (id) => {
   return products.find((product) => product.id == id) || [];
+}
+const addProductAmount = (id) => {
+  console.log('Hola!!');
 }
 
 createProductInCart();

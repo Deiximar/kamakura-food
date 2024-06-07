@@ -17,5 +17,3 @@ const createReceipt = (product) => {
     `
     receiptProducts.insertBefore(receiptProduct, document.getElementById(`receipt-total`))
 }
-
-selectedProduct.forEach(product => createReceipt(product))
