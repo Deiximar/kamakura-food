@@ -1,7 +1,7 @@
 
 const receiptProducts = document.querySelector(`#receipt-container`);
 document.querySelector(`.receipt-product`).remove();
-document.getElementById("close-receipt").addEventListener("click", closeReceipt);
+document.getElementById("close-receipt").addEventListener("click", ()=> closeReceipt());
 
 const createReceipt = (product) => {
     const receiptProduct = document.createElement(`div`);
