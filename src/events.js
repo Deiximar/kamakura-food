@@ -4,6 +4,8 @@ import { filterProducts } from './menu.js'
 
 document.getElementById("cart").addEventListener("click", displayCart);
 
+document.getElementById("proceedPay-button").addEventListener("click", displayReceipt);
+
 function displayCart() {
   let cartContainer = document.getElementById("cart-container");
   if (cartContainer.style.display === "none") {
@@ -16,5 +18,12 @@ function displayCart() {
 const addEventClickFilter = (button, filter) => {
   button.addEventListener('click', () => filterProducts(filter))
 }
-
+function displayReceipt(){
+  const receiptContainer = document.getElementById("receipt-container");
+  if (receiptContainer.style.display === "none"){
+    receiptContainer.style.display = "flex";
+  }else{
+    receiptContainer.style.display = "none"
+  }
+}
 export { addEventClickFilter }
