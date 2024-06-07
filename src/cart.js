@@ -24,7 +24,7 @@ function createProductInCart(product) {
 `;
   cartProducts.appendChild(cartContainer);
 }
-selectedProducts.forEach((product) => createProductInCart(product));
+//selectedProducts.forEach((product) => createProductInCart(product));
 
 
 const addProduct = (id) => {

@@ -1,7 +1,7 @@
 
 const receiptProducts = document.querySelector(`#receipt-container`);
 document.querySelector(`.receipt-product`).remove();
-
+document.getElementById("close-receipt").addEventListener("click", closeReceipt);
 
 const createReceipt = (product) => {
     const receiptProduct = document.createElement(`div`);
@@ -18,4 +18,9 @@ const createReceipt = (product) => {
     receiptProducts.insertBefore(receiptProduct, document.getElementById(`receipt-total`))
 }
 
-selectedProduct.forEach(product => createReceipt(product))
+//selectedProduct.forEach(product => createReceipt(product))
+
+const closeReceipt = () => {
+    document.getElementById("receipt-container").style.display = "none";
+}
+
