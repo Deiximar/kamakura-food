@@ -1,9 +1,8 @@
-import { filterProducts } from './menu.js'
+import { filterProducts } from './searcher.js'
 //Intenta separar los eventos en este archivo.
 
 
 document.getElementById("cart").addEventListener("click", displayCart);
-
 document.getElementById("proceedPay-button").addEventListener("click", displayReceipt);
 
 function displayCart() {
@@ -18,11 +17,12 @@ function displayCart() {
 const addEventClickFilter = (button, filter) => {
   button.addEventListener('click', () => filterProducts(filter))
 }
-function displayReceipt(){
+
+function displayReceipt() {
   const receiptContainer = document.getElementById("receipt-container");
-  if (receiptContainer.style.display === "none"){
+  if (receiptContainer.style.display === "none") {
     receiptContainer.style.display = "flex";
-  }else{
+  } else {
     receiptContainer.style.display = "none"
   }
 }
