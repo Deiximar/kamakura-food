@@ -58,12 +58,13 @@ const addCartProduct = (id) => {
     };
     cart.push(cartProduct);
     createProductInCart(cartProduct);
-    hideText();
   } else {
     cartProduct.quantity += 1;
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateQuantityText(cartProduct);
+
+  hideText();
 }
 
 const searchProduct = (id) => {
@@ -85,8 +86,9 @@ const substractProductAmount = (id) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     loadAllProducts();
-    hideText();
   }
+
+  hideText();
 }
 
 const addProductAmount = (id) => {

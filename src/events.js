@@ -1,5 +1,5 @@
 import { filterProducts } from './searcher.js';
-import { getCart} from './cart.js';
+import { getCart } from './cart.js';
 //Intenta separar los eventos en este archivo.
 
 
@@ -32,12 +32,12 @@ const text = document.querySelector('#cart-products > h3');
 
 function hideText() {
   const cart = getCart();
-  if (cart.length === 0 || cart === undefined) {
+  if (cart.length === 0) {
     text.style.display = "flex";
-  }else{
+  } else {
     text.style.display = "none";
   }
-} 
+}
 
 hideText();
 
