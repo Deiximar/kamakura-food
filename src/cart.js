@@ -12,10 +12,15 @@ function createProductInCart() {
   cart.map((item) => {
     let product = searchProduct(item.id);
     const cartContainer = document.createElement("div");
+    cartContainer.classList = "cart-container";
 
     const addbutton = document.createElement('button');
     addbutton.textContent = '+';
     addbutton.addEventListener('click', () => addProductAmount(product.id));
+
+    const substractButton = document.createElement('button');
+substractButton.textContent = '-';
+substractButton.addEventListener('click', () => substractProductAmount(product.id));
 
     cartContainer.classList = "cart-container";
     cartContainer.innerHTML = `
@@ -26,17 +31,16 @@ function createProductInCart() {
         </div>
         <div class="quantity-container" id="quantity-${product.id}">
             <p class="quantity">${item.item}</p>
-            <button>-</button>
+
         </div>
 `;
     cartProducts.appendChild(cartContainer);
-    const quantityContainer = document.querySelector(`#quantity-${product.id}`);
+    const quantityContainer = cartContainer.querySelector(`#quantity-${product.id}`);
     quantityContainer.insertBefore(addbutton, quantityContainer.querySelector('.quantity'))
+    quantityContainer.appendChild(substractButton);
   })
-
 }
 
-//selectedProducts.forEach((product) => createProductInCart(product));
 
 const addProduct = (id) => {
   const search = cart.find(item => item.id == id);
@@ -58,6 +62,22 @@ const searchProduct = (id) => {
   return products.find((product) => product.id == id) || [];
 }
 
+const substractProductAmount = (id) => {
+  const findProduct = cart.find(product => product.id == id);
+  
+    if (findProduct.item > 1) {
+      findProduct.item -= 1;
+      updateQuantityText(findProduct);
+    } else {
+      const index = cart.indexOf(findProduct);
+      if (index > -1) {
+        cart.splice(index, 1);
+      }
+      createProductInCart();
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 const addProductAmount = (id) => {
   const findProduct = cart.find(product => product.id == id)
   findProduct.item += 1;
@@ -65,9 +85,11 @@ const addProductAmount = (id) => {
   localStorage.setItem("cart", JSON.stringify(cart))
 }
 
-const updateQuantityText = (produtCart) => {
-  document.querySelector(`#quantity-${produtCart.id}`).querySelector('.quantity').textContent = produtCart.item;
+const updateQuantityText = (cartProduct) => {
+  document.querySelector(`#quantity-${cartProduct.id}`).querySelector('.quantity').textContent = cartProduct.item;
 }
 
+
 createProductInCart();
-export { addProduct, addProductAmount }
+export { addProduct, addProductAmount, substractProductAmount }
+
