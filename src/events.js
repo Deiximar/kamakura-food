@@ -1,4 +1,5 @@
-import { filterProducts } from './searcher.js'
+import { filterProducts } from './searcher.js';
+import { getCart} from './cart.js';
 //Intenta separar los eventos en este archivo.
 
 
@@ -26,4 +27,18 @@ function displayReceipt() {
     receiptContainer.style.display = "none"
   }
 }
-export { addEventClickFilter }
+
+const text = document.querySelector('#cart-products > h3');
+
+function hideText() {
+  const cart = getCart();
+  if (cart.length === 0 || cart === undefined) {
+    text.style.display = "flex";
+  }else{
+    text.style.display = "none";
+  }
+} 
+
+hideText();
+
+export { addEventClickFilter, hideText }

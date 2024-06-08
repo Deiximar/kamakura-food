@@ -1,5 +1,6 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../assets/data/data.js";
+import { hideText } from "./events.js";
 
 const cartProducts = document.querySelector("#cart-products");
 document.querySelector(".cart-container").remove();
@@ -57,6 +58,7 @@ const addCartProduct = (id) => {
     };
     cart.push(cartProduct);
     createProductInCart(cartProduct);
+    hideText();
   } else {
     cartProduct.quantity += 1;
   }
@@ -83,6 +85,7 @@ const substractProductAmount = (id) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     loadAllProducts();
+    hideText();
   }
 }
 
