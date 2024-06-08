@@ -1,6 +1,6 @@
 import { filters, products } from '../assets/data/data.js';
 import { addEventClickFilter } from './events.js';
-import { addProduct } from './cart.js'
+import { addCartProduct } from './cart.js'
 
 //DEBE imprimir en pantalla la información de filtros.
 const filtersContainer = document.querySelector('#filters');
@@ -25,7 +25,7 @@ const createProduct = (product) => {
   productContainer.setAttribute('id', `product-id-${product.id}`)
 
   button.classList = 'add-button';
-  button.addEventListener('click', () => addProduct(product.id));
+  button.addEventListener('click', () => addCartProduct(product.id));
   button.textContent = 'Añadir';
 
   productContainer.innerHTML = `
