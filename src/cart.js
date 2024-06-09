@@ -16,6 +16,7 @@ function createProductInCart(cartProduct) {
   const product = searchProduct(cartProduct.id)
   const cartContainer = document.createElement("div");
   cartContainer.classList = "cart-container";
+  cartContainer.setAttribute('id', `cart-product-${cartProduct.id}`);
 
   const addbutton = document.createElement('button');
   addbutton.textContent = '+';
@@ -25,12 +26,11 @@ function createProductInCart(cartProduct) {
   substractButton.textContent = '-';
   substractButton.addEventListener('click', () => substractProductAmount(product.id));
 
-  cartContainer.classList = "cart-container";
   cartContainer.innerHTML = `
         <button class="close-button"><img src="./assets/img/close.svg" alt="close"></button>
         <div class="text-container">
             <h3>${product.name}</h3>
-            <h5>${product.price}€</h5>
+            <h5 class="subtotal">${product.price * cartProduct.quantity}€</h5>
         </div>
         <div class="quantity-container" id="quantity-${product.id}">
             <p class="quantity">${cartProduct.quantity}</p>
@@ -73,14 +73,16 @@ const searchProduct = (id) => {
 
 const substractProductAmount = (id) => {
   const cart = getCart();
-  const findProduct = cart.find(product => product.id == id);
+  const cartProduct = cart.find(product => product.id == id);
+  const product = searchProduct(cartProduct.id);
 
-  if (findProduct.quantity > 1) {
-    findProduct.quantity -= 1;
-    updateQuantityText(findProduct);
+  if (cartProduct.quantity > 1) {
+    cartProduct.quantity -= 1;
+    updateQuantityText(cartProduct);
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartProductSubtotal(cartProduct, product.price);
   } else {
-    const index = cart.indexOf(findProduct);
+    const index = cart.indexOf(cartProduct);
     if (index > -1) {
       cart.splice(index, 1);
     }
@@ -93,9 +95,11 @@ const substractProductAmount = (id) => {
 
 const addProductAmount = (id) => {
   const cart = getCart();
-  const findProduct = cart.find(product => product.id == id)
-  findProduct.quantity += 1;
-  updateQuantityText(findProduct);
+  const cartProduct = cart.find(product => product.id == id);
+  const product = searchProduct(cartProduct.id);
+  cartProduct.quantity += 1;
+  updateQuantityText(cartProduct);
+  updateCartProductSubtotal(cartProduct, product.price);
   localStorage.setItem("cart", JSON.stringify(cart))
 }
 
@@ -104,6 +108,10 @@ const updateQuantityText = (cartProduct) => {
   element.textContent = cartProduct.quantity;
 }
 
+const updateCartProductSubtotal = (cartProduct, productPrice) => {
+  const element = document.querySelector(`#cart-product-${cartProduct.id} .subtotal`);
+  element.textContent = `${cartProduct.quantity * productPrice}€`
+}
 
 loadAllProducts();
 export { addCartProduct, addProductAmount, substractProductAmount, getCart }
