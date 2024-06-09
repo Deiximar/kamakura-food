@@ -9,6 +9,7 @@ function loadAllProducts() {
   document.querySelectorAll(".cart-container").forEach(product => product.remove());
   const cart = getCart();
   cart.forEach(product => createProductInCart(product));
+  updateTotal();
 }
 
 // Agrega un event listener al contenedor de productos
@@ -51,6 +52,7 @@ const getCart = () => {
 const addCartProduct = (id) => {
   const cart = getCart();
   let cartProduct = cart.find(item => item.id == id);
+
   if (cartProduct === undefined) {
     cartProduct = {
       id: id,
@@ -61,9 +63,11 @@ const addCartProduct = (id) => {
   } else {
     cartProduct.quantity += 1;
   }
+  const product = searchProduct(cartProduct.id);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateQuantityText(cartProduct);
-
+  updateCartProductSubtotal(cartProduct, product.price);
+  updateTotal();
   hideText();
 }
 
@@ -89,7 +93,7 @@ const substractProductAmount = (id) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     loadAllProducts();
   }
-
+  updateTotal();
   hideText();
 }
 
@@ -98,9 +102,10 @@ const addProductAmount = (id) => {
   const cartProduct = cart.find(product => product.id == id);
   const product = searchProduct(cartProduct.id);
   cartProduct.quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart))
   updateQuantityText(cartProduct);
   updateCartProductSubtotal(cartProduct, product.price);
-  localStorage.setItem("cart", JSON.stringify(cart))
+  updateTotal();
 }
 
 const updateQuantityText = (cartProduct) => {
@@ -111,6 +116,19 @@ const updateQuantityText = (cartProduct) => {
 const updateCartProductSubtotal = (cartProduct, productPrice) => {
   const element = document.querySelector(`#cart-product-${cartProduct.id} .subtotal`);
   element.textContent = `${cartProduct.quantity * productPrice}€`
+}
+
+const updateTotal = () => {
+  const totalElement = document.querySelector('#cart-total');
+  const cartProducts = getCart();
+  let total = 0;
+
+  cartProducts.forEach(cartProduct => {
+    const product = searchProduct(cartProduct.id);
+    total += product.price * cartProduct.quantity;
+  })
+
+  totalElement.textContent = `Total: ${total}€`
 }
 
 loadAllProducts();
