@@ -26,12 +26,13 @@ function createProductInCart(cartProduct) {
   const substractButton = document.createElement('button');
   substractButton.textContent = '-';
   substractButton.addEventListener('click', () => substractProductAmount(product.id));
+  const subtotal = product.price * cartProduct.quantity;
 
   cartContainer.innerHTML = `
         <button class="close-button"><img src="./assets/img/close.svg" alt="close"></button>
         <div class="text-container">
             <h3>${product.name}</h3>
-            <h5 class="subtotal">${product.price * cartProduct.quantity}€</h5>
+            <h5 class="subtotal">${subtotal.toFixed(2)}€</h5>
         </div>
         <div class="quantity-container" id="quantity-${product.id}">
             <p class="quantity">${cartProduct.quantity}</p>
@@ -115,7 +116,8 @@ const updateQuantityText = (cartProduct) => {
 
 const updateCartProductSubtotal = (cartProduct, productPrice) => {
   const element = document.querySelector(`#cart-product-${cartProduct.id} .subtotal`);
-  element.textContent = `${cartProduct.quantity * productPrice}€`
+  const subtotal = cartProduct.quantity * productPrice;
+  element.textContent = `${subtotal.toFixed(2)}€`
 }
 
 const updateTotal = () => {
@@ -128,7 +130,7 @@ const updateTotal = () => {
     total += product.price * cartProduct.quantity;
   })
 
-  totalElement.textContent = `Total: ${total}€`
+  totalElement.textContent = `Total: ${total.toFixed(2)}€`
 }
 
 loadAllProducts();
