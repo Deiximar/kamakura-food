@@ -1,0 +1,33 @@
+.modal{
+    display:none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(181, 180, 180);
+    border-radius: 2px;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 440px;
+    height: 220px;
+    padding:10px;
+    text-align: center;
+}
+.close{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border:1px solid black;
+    border-radius: 100%;
+    background-color: black;
+    color:white;
+}
+.closeContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.thanks{
+    color:black;
+}
+.modal .image-logo{
+    margin-top: 10px;
+}

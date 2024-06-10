@@ -33,4 +33,21 @@ const closeReceipt = () => {
     productsContainer.style.display = "flex";
 }
 
+const purchaseMessage = () => {
+    const modal = document.createElement("div");
+    const container = document.querySelector(".main-container");
+    modal.classList = "modal";
+    modal.setAttribute("id", "modal")
+    modal.innerHTML = `
+    
+    <div class="closeContainer"><span class="close" id="close">&times;</span></div>
+    <h2 class="thanks">Gracias por tu Compra</h2>
+    <p>¡Pedido realizado con éxito, gracias por comprar en Kamakura Food!</p>
+    <img class="image-logo" src="./assets/img/logo.svg" alt="restaurant logo">
+    
+
+    `
+    container.appendChild(modal);
+}
+purchaseMessage();
 export { createReceipt }
