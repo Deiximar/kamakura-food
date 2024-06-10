@@ -5,10 +5,15 @@ Bienvenida al equipo de desarrollo  de la empresa ficticia de KAMAKURA Food. Est
 ## Índice
 
 1-Descripción del Proyecto
+
 2-Requisitos Técnicos
+
 3-Visualización del resultado
+
 4-Instalación
+
 5-Equipo del Proyecto
+
 
 ## 1-Descripción del Proyecto
 
