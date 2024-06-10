@@ -1,4 +1,5 @@
 import { getCart, searchProduct } from "./cart.js"
+import { closePopover } from "./events.js"
 
 const receiptProducts = document.querySelector(`#receipt-container`);
 document.querySelector(`.receipt-product`).remove();
@@ -43,18 +44,30 @@ const closeReceipt = () => {
 const purchaseMessage = () => {
     const modal = document.createElement("div");
     const container = document.querySelector(".main-container");
+    const closeButton = document.createElement("button");
+    closeButton.classList = "close-button";
+    closeButton.setAttribute("id","close-modal");
+    const img = document.createElement("img");
+    img.src = "./assets/img/close.svg";
+    img.alt = "close";
+    
+    closeButton.addEventListener("click", () => closePopover());
     modal.classList = "modal";
     modal.setAttribute("id", "modal")
     modal.innerHTML = `
     
-    <div class="closeContainer"><span class="close" id="close">&times;</span></div>
+    <div class="closeContainer"></div>
     <h2 class="thanks">Gracias por tu Compra</h2>
     <p>¡Pedido realizado con éxito, gracias por comprar en Kamakura Food!</p>
     <img class="image-logo" src="./assets/img/logo.svg" alt="restaurant logo">
-    
+
 
     `
     container.appendChild(modal);
+    document.querySelector(".closeContainer").appendChild(closeButton);
+    closeButton.appendChild(img);
 }
 purchaseMessage();
-export { createReceipt }
+
+export { createReceipt, purchaseMessage }
+

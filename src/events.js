@@ -1,11 +1,17 @@
 import { filterProducts } from './searcher.js';
 import { getCart, removeProduct,searchProduct, updateTotal } from './cart.js';
-import { createReceipt } from './receipt.js';
+import { createReceipt, purchaseMessage } from './receipt.js';
+
 //Intenta separar los eventos en este archivo.
 
 
 document.getElementById("cart").addEventListener("click", displayCart);
 document.getElementById("proceedPay-button").addEventListener("click", displayReceipt);
+
+const payButton = document.getElementById("pay-button");
+payButton.addEventListener("click", showPopover);
+
+
 
 function displayCart() {
   let cartContainer = document.getElementById("cart-container");
@@ -46,7 +52,15 @@ function removeProductEvent(buttonElement, id) {
     document.querySelector(`#cart-product-${id}`).remove();
   })
 }
+function showPopover(){
+  const modal = document.querySelector(".modal");
+  modal.style.display = "block";
+}
+
+const closePopover = () => {
+  document.getElementById("modal").style.display = "none";
+}
 
 hideText();
 
-export { addEventClickFilter, hideText, removeProductEvent }
+export { addEventClickFilter, hideText, removeProductEvent, closePopover }
