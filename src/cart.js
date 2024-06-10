@@ -145,5 +145,5 @@ function removeProduct(productID) {
 }
 
 loadAllProducts();
-export { addCartProduct, addProductAmount, substractProductAmount, getCart, removeProduct }
+export { addCartProduct, addProductAmount, substractProductAmount, getCart, searchProduct, removeProduct }
 
