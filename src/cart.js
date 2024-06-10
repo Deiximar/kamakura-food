@@ -1,6 +1,6 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../assets/data/data.js";
-import { hideText } from "./events.js";
+import { hideText, removeProductEvent } from "./events.js";
 
 const cartProducts = document.querySelector("#cart-products");
 document.querySelector(".cart-container").remove();
@@ -39,7 +39,8 @@ function createProductInCart(cartProduct) {
         </div>
     `;
   cartProducts.appendChild(cartContainer);
-
+  const closeButton = document.querySelector(`#cart-product-${cartProduct.id} > .close-button`);
+  removeProductEvent(closeButton, `${cartProduct.id}`);
   const quantityContainer = cartContainer.querySelector(`#quantity-${product.id}`);
   quantityContainer.insertBefore(addbutton, quantityContainer.querySelector('.quantity'))
   quantityContainer.appendChild(substractButton);
@@ -131,6 +132,16 @@ const updateTotal = () => {
   totalElement.textContent = `Total: ${total}€`
 }
 
+function removeProduct(productID) {
+  const cart = getCart();
+  console.log(productID)
+  console.log(cart);
+  const newCart = cart.filter((cartProduct) => cartProduct.id != productID);
+  console.log(newCart, 'new');
+  localStorage.setItem("cart", JSON.stringify(newCart));
+  updateTotal();
+}
+
 loadAllProducts();
-export { addCartProduct, addProductAmount, substractProductAmount, getCart }
+export { addCartProduct, addProductAmount, substractProductAmount, getCart, removeProduct }
 
