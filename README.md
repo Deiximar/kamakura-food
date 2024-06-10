@@ -22,9 +22,17 @@ KAMAKURA Food es un proyecto práctico desarrollado en el Bootcamp de Factoría 
 ## 2-Requisitos Técnicos
 
 -Front-end: Tecnologías (HTML, CSS, JS (vanilla))
+
+
 -Control de versiones: Git (gitflow)
+
+
 -Buenas prácticas: Código Limpio
+
+
 -Testing: Jest / Mocha / Chai / Vitest
+
+
 
 ## 3-Visualización del resultado
 
