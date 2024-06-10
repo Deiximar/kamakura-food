@@ -134,5 +134,5 @@ const updateTotal = () => {
 }
 
 loadAllProducts();
-export { addCartProduct, addProductAmount, substractProductAmount, getCart }
+export { addCartProduct, addProductAmount, substractProductAmount, getCart, searchProduct }
 
