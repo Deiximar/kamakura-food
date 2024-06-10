@@ -12,7 +12,7 @@
     padding:10px;
     text-align: center;
 }
-.close{
+/*.close{
     width: 20px;
     height: 20px;
     text-align: center;
@@ -20,7 +20,7 @@
     border-radius: 100%;
     background-color: black;
     color:white;
-}
+}*/
 .closeContainer{
     display: flex;
     justify-content: flex-end;
