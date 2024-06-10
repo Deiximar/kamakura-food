@@ -8,7 +8,8 @@ document.getElementById("close-receipt").addEventListener("click", () => closeRe
 const createReceipt = () => {
     document.querySelectorAll('.receipt-product').forEach(receipt => receipt.remove());
     const cartProducts = getCart();
-    cartProducts.forEach((cartProduct) => {
+    if (cartProducts.length > 0) {
+        cartProducts.forEach((cartProduct) => {
 
         const product = searchProduct(cartProduct.id);
         const subtotal = cartProduct.quantity * product.price;
@@ -25,6 +26,12 @@ const createReceipt = () => {
     `
     receiptProducts.insertBefore(receiptProduct, document.getElementById(`receipt-total`))
     })
+} else {
+    const text = document.createElement(`h3`);
+    text.textContent = "Aún no has escogido tu orden";
+    receiptProducts.insertBefore(text, document.getElementById(`receipt-total`));
+}
+    
 }
 
 
