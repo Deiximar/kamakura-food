@@ -68,6 +68,6 @@ Y no olvides antes de empezar realizar  npm install en la terminal
 
 [Paola](https://github.com/Paola077)
 
-[Esher](https://github.com/Fire-Fairy84)
+[Esther](https://github.com/Fire-Fairy84)
 
 [Ana](https://github.com/tursdlc)
