@@ -123,6 +123,7 @@ const updateCartProductSubtotal = (cartProduct, productPrice) => {
 
 const updateTotal = () => {
   const totalElement = document.querySelector('#cart-total');
+  const totalReceiptElement = document.querySelector(`#receipt-total`);
   const cartProducts = getCart();
   let total = 0;
 
@@ -132,6 +133,7 @@ const updateTotal = () => {
   })
 
   totalElement.textContent = `Total: ${total.toFixed(2)}€`
+  totalReceiptElement.textContent = `Total: ${total.toFixed(2)}€`
 }
 
 function removeProduct(productID) {
@@ -145,5 +147,5 @@ function removeProduct(productID) {
 }
 
 loadAllProducts();
-export { addCartProduct, addProductAmount, substractProductAmount, getCart, searchProduct, removeProduct }
+export { addCartProduct, addProductAmount, substractProductAmount, getCart, searchProduct, removeProduct, updateTotal }
 

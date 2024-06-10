@@ -1,5 +1,5 @@
 import { filterProducts } from './searcher.js';
-import { getCart, removeProduct,searchProduct } from './cart.js';
+import { getCart, removeProduct,searchProduct, updateTotal } from './cart.js';
 import { createReceipt } from './receipt.js';
 //Intenta separar los eventos en este archivo.
 
@@ -26,6 +26,7 @@ function displayReceipt() {
   receiptContainer.style.display = "flex";
   productsContainer.style.display = "none";
   createReceipt();
+  updateTotal();
 }
 
 const text = document.querySelector('#cart-products > h3');
