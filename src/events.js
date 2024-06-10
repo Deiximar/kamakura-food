@@ -1,6 +1,5 @@
 import { filterProducts } from './searcher.js';
-import { getCart } from './cart.js';
-import { searchProduct } from './cart.js';
+import { getCart, removeProduct,searchProduct } from './cart.js';
 import { createReceipt } from './receipt.js';
 //Intenta separar los eventos en este archivo.
 
@@ -40,6 +39,13 @@ function hideText() {
   }
 }
 
+function removeProductEvent(buttonElement, id) {
+  buttonElement.addEventListener('click', () => {
+    removeProduct(id);
+    document.querySelector(`#cart-product-${id}`).remove();
+  })
+}
+
 hideText();
 
-export { addEventClickFilter, hideText }
+export { addEventClickFilter, hideText, removeProductEvent }

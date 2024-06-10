@@ -5,10 +5,15 @@ Bienvenida al equipo de desarrollo  de la empresa ficticia de KAMAKURA Food. Est
 ## Índice
 
 1-Descripción del Proyecto
+
 2-Requisitos Técnicos
+
 3-Visualización del resultado
+
 4-Instalación
+
 5-Equipo del Proyecto
+
 
 ## 1-Descripción del Proyecto
 
@@ -17,9 +22,17 @@ KAMAKURA Food es un proyecto práctico desarrollado en el Bootcamp de Factoría 
 ## 2-Requisitos Técnicos
 
 -Front-end: Tecnologías (HTML, CSS, JS (vanilla))
+
+
 -Control de versiones: Git (gitflow)
+
+
 -Buenas prácticas: Código Limpio
+
+
 -Testing: Jest / Mocha / Chai / Vitest
+
+
 
 ## 3-Visualización del resultado
 
@@ -68,6 +81,6 @@ Y no olvides antes de empezar realizar  npm install en la terminal
 
 [Paola](https://github.com/Paola077)
 
-[Esher](https://github.com/Fire-Fairy84)
+[Esther](https://github.com/Fire-Fairy84)
 
 [Ana](https://github.com/tursdlc)
